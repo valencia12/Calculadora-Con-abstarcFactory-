@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -99,43 +100,59 @@ public class Ventana extends JPanel{
        @Override
        public void actionPerformed(ActionEvent e){
             AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
+            if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
+            {
             txtR.setText(String.valueOf(factory.getOperacion(Operaciones.SUMAR,
                   Float.parseFloat(textF2.getText()),
                   Float.parseFloat(textF3.getText()))));
+            
+            }else{
+               JOptionPane.showMessageDialog(null,"Debe ingresar datos"); 
+            }
        }
-   });
+     });
    
    buttonR.addActionListener(new ActionListener(){
        @Override
        
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
-           txtR.setText(String.valueOf(factory.getOperacion(Operaciones.RESTAR,
-                  Float.parseFloat(textF2.getText()),
-                  Float.parseFloat(textF3.getText()))));
-   
+           if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
+           {
+                txtR.setText(String.valueOf(factory.getOperacion(Operaciones.RESTAR,
+                     Float.parseFloat(textF2.getText()),
+                     Float.parseFloat(textF3.getText()))));
+            }else{
+                JOptionPane.showMessageDialog(null, "Debe ingresar datos");
+           }
     }
    });
    
    btnConver.addActionListener(new ActionListener(){
        @Override
        public void actionPerformed(ActionEvent e){
-           int cap;
-           
            AbstractFactory factory = FactoryProducer.getFactory(Type.BINARIO);
+           if (!(txtCap.getText()).equals(""))
+           {
            txtRC.setText(factory.getConversion(Integer.parseInt(txtCap.getText())));
-           
-           
-       }
+          }else{
+               JOptionPane.showMessageDialog(null,"Debe ingresar datos");
+           }
+         }
    });
    
    buttonD.addActionListener(new ActionListener(){
        @Override
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
+           if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
+           {
            txtR.setText(String.valueOf(factory.getOperacion(Operaciones.DIVIDIR,
                   Float.parseFloat(textF2.getText()),
                   Float.parseFloat(textF3.getText()))));
+         }else{
+               JOptionPane.showMessageDialog(null,"Debe ingresar datos");
+         }
        }
    });
    
@@ -143,13 +160,17 @@ public class Ventana extends JPanel{
        @Override
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
+           if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
+           {
            txtR.setText(String.valueOf(factory.getOperacion(Operaciones.MULTIPLICAR,
                   Float.parseFloat(textF2.getText()),
                   Float.parseFloat(textF3.getText()))));
+           }else{
+               JOptionPane.showMessageDialog(null,"Debe ingresar datos");
+           }
        }
    });
    
    }
-   
 }
 
