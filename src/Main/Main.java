@@ -20,6 +20,10 @@ public class Main {
     ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     ventana.pack();
     ventana.setVisible(true);
+    Ventana v = new Ventana();
     
-     }
+    }
+     
+     
 }
+

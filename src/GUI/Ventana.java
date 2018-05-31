@@ -8,6 +8,7 @@ package GUI;
 import AbstracFactory.AbstractFactory;
 import AbstracFactory.FactoryProducer;
 import AbstracFactory.Type;
+import Main.Main;
 import Operaciones.Operaciones;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -28,10 +29,12 @@ public class Ventana extends JPanel{
    public int HEIGHT = 250, heightTF = 30, heightB = 30;
    public JTextField textF1, textF2, textF3, txtR, txtRC, txtCap;
    private JLabel titulo, resultado;
+   Exeption Exe;
    public JButton ButtonOp, buttonS, buttonR, buttonM, buttonD, btnConver;
    public Ventana(){
-    
-    titulo = new JLabel("Calculadora", JLabel.CENTER);
+    Exeption Exe = new Exeption();
+       
+    titulo = new JLabel("Calculadora");
     titulo.setSize(120,70);
     
     resultado = new JLabel("R. ");
@@ -89,6 +92,7 @@ public class Ventana extends JPanel{
     setLayout(null);
     setPreferredSize(new Dimension(WIDTH, HEIGHT));
     
+    
    ButtonOp.addActionListener(new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent arg0){
@@ -100,6 +104,9 @@ public class Ventana extends JPanel{
        @Override
        public void actionPerformed(ActionEvent e){
             AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
+            boolean v = Exe.Validacion(textF2.getText());
+            boolean f = Exe.Validacion(textF3.getText());
+            if( v!= false && f!=false){
             if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
             {
             txtR.setText(String.valueOf(factory.getOperacion(Operaciones.SUMAR,
@@ -108,6 +115,14 @@ public class Ventana extends JPanel{
             
             }else{
                JOptionPane.showMessageDialog(null,"Debe ingresar datos"); 
+               textF2.setText(null);
+               textF3.setText(null);
+            }
+            }else{
+                JOptionPane.showMessageDialog(null,"Debe ingresar Solo numeros"); 
+                textF2.setText(null);
+                textF3.setText(null);
+            
             }
        }
      });
@@ -117,6 +132,9 @@ public class Ventana extends JPanel{
        
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
+           boolean v = Exe.Validacion(textF2.getText());
+           boolean f = Exe.Validacion(textF3.getText());
+           if( v!= false && f!=false){
            if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
            {
                 txtR.setText(String.valueOf(factory.getOperacion(Operaciones.RESTAR,
@@ -124,6 +142,13 @@ public class Ventana extends JPanel{
                      Float.parseFloat(textF3.getText()))));
             }else{
                 JOptionPane.showMessageDialog(null, "Debe ingresar datos");
+               textF2.setText(null);
+               textF3.setText(null);
+           }
+           }else{
+                JOptionPane.showMessageDialog(null,"Debe ingresar Solo numeros");
+                textF2.setText(null);
+                textF3.setText(null);
            }
     }
    });
@@ -132,11 +157,20 @@ public class Ventana extends JPanel{
        @Override
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.BINARIO);
+           boolean v = Exe.Validacion(textF2.getText());
+           boolean f = Exe.Validacion(textF3.getText());
+           if( v!= false && f!=false){
            if (!(txtCap.getText()).equals(""))
            {
            txtRC.setText(factory.getConversion(Integer.parseInt(txtCap.getText())));
           }else{
                JOptionPane.showMessageDialog(null,"Debe ingresar datos");
+               txtCap.setText(null);
+               
+           }
+         }else{
+                JOptionPane.showMessageDialog(null,"Debe ingresar Solo numeros");
+                txtCap.setText(null);
            }
          }
    });
@@ -145,6 +179,9 @@ public class Ventana extends JPanel{
        @Override
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
+           boolean v = Exe.Validacion(textF2.getText());
+           boolean f = Exe.Validacion(textF3.getText());
+           if( v!= false && f!=false){
            if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
            {
            txtR.setText(String.valueOf(factory.getOperacion(Operaciones.DIVIDIR,
@@ -152,21 +189,39 @@ public class Ventana extends JPanel{
                   Float.parseFloat(textF3.getText()))));
          }else{
                JOptionPane.showMessageDialog(null,"Debe ingresar datos");
+               textF2.setText(null);
+               textF3.setText(null);
          }
+         }else{
+               JOptionPane.showMessageDialog(null,"Debe ingresar Solo numeros");
+               textF2.setText(null);
+               textF3.setText(null);
+           }
        }
    });
    
    buttonM.addActionListener(new ActionListener(){
+       
        @Override
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.ARITMETICO);
-           if (!(textF2.getText()).equals("") && !(textF3.getText()).equals("") )
+           boolean v = Exe.Validacion(textF2.getText());
+           boolean f = Exe.Validacion(textF3.getText());
+           if( v!= false && f!=false){
+           if (!(textF2.getText()).equals("") && !(textF3.getText()).equals(""))
            {
            txtR.setText(String.valueOf(factory.getOperacion(Operaciones.MULTIPLICAR,
                   Float.parseFloat(textF2.getText()),
                   Float.parseFloat(textF3.getText()))));
            }else{
                JOptionPane.showMessageDialog(null,"Debe ingresar datos");
+               textF2.setText(null);
+               textF3.setText(null);
+           } 
+           }else{
+               JOptionPane.showMessageDialog(null,"Debe ingresar Solo numeros");
+               textF2.setText(null);
+               textF3.setText(null);
            }
        }
    });
