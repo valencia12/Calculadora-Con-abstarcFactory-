@@ -157,9 +157,9 @@ public class Ventana extends JPanel{
        @Override
        public void actionPerformed(ActionEvent e){
            AbstractFactory factory = FactoryProducer.getFactory(Type.BINARIO);
-           boolean v = Exe.Validacion(textF2.getText());
-           boolean f = Exe.Validacion(textF3.getText());
-           if( v!= false && f!=false){
+           boolean v = Exe.Validacion(txtCap.getText());
+           
+           if( v!= false){
            if (!(txtCap.getText()).equals(""))
            {
            txtRC.setText(factory.getConversion(Integer.parseInt(txtCap.getText())));
